@@ -7,6 +7,7 @@
  - Please email me at zarif.azher@gmail.com if you want more info to make a pull request
  - Package does not follow all the correct formatting of an 'official' module (yet)
  - This is a work-in-progress
+ - Tested with Python 3.8
  - Reach out with any questions!
 
  **Usage**
@@ -19,4 +20,9 @@
  ```python
  from ModelJson import get_model
  model = get_model('model.json')
+ ```
+ - You can test that functionality is working as expected, by running "test.py" and passing in the path to the model json file as a command line argument
+ - Ex:
+ ```shell
+ python test.py -jsonpath model.json
  ```
