@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from layers import DenseLayer,Conv2dLayer
+from layers import DenseLayer,Conv2dLayer,FlattenLayer
 import collections
 from collections import OrderedDict
 
@@ -19,9 +19,12 @@ def get_layers_dict(json_list):
             layer = DenseLayer(layer_info)
         elif 'conv2d' in layer_info['layer_type']:
             layer = Conv2dLayer(layer_info)
+        elif 'flatten' in layer_info['layer_type']:
+            layer = FlattenLayer(layer_info)
         layer_tup,activation_tup = layer.get_torch_layer()
         layers_list.append(layer_tup)
-        layers_list.append(activation_tup)
+        if activation_tup[1] is not None:
+            layers_list.append(activation_tup)
     #ret = dict([(item[0], item[1]) for item in layers_list])
     ret = collections.OrderedDict(layers_list)
     return ret

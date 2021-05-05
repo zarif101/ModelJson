@@ -11,7 +11,7 @@ class DenseLayer:
         self.units_in = layer_dict['units_in']
         self.units_out = layer_dict['units_out']
         self.activation = layer_dict['activation']
-        self.layer_mappings = {'dense':nn.Linear,'conv2d':nn.Conv2d}
+        self.layer_mappings = {'dense':nn.Linear,'conv2d':nn.Conv2d,'flatten':nn.Flatten}
         self.activation_mappings = {'relu':nn.ReLU}
 
     def get_torch_layer(self):
@@ -32,7 +32,7 @@ class Conv2dLayer:
         self.kernel_size_2 = layer_dict['kernel_size_2']
         self.kernel_size = (self.kernel_size_1,self.kernel_size_2)
         self.activation = layer_dict['activation']
-        self.layer_mappings = {'dense':nn.Linear,'conv2d':nn.Conv2d}
+        self.layer_mappings = {'dense':nn.Linear,'conv2d':nn.Conv2d,'flatten':nn.Flatten}
         self.activation_mappings = {'relu':nn.ReLU}
 
     def get_torch_layer(self):
@@ -41,3 +41,15 @@ class Conv2dLayer:
         activation = self.activation_mappings[self.activation]()
 
         return (self.layer_name,layer),(self.layer_name+'_act',activation)
+
+class FlattenLayer():
+    def __init__(self,layer_dict):
+        self.layer_dict = layer_dict
+        self.layer_type = layer_dict['layer_type']
+        self.layer_name = layer_dict['layer_name']
+        self.layer_mappings = {'dense':nn.Linear,'conv2d':nn.Conv2d,'flatten':nn.Flatten}
+
+    def get_torch_layer(self):
+        layer = self.layer_mappings[self.layer_type]()
+
+        return (self.layer_name,layer),(self.layer_name+'_act',None)

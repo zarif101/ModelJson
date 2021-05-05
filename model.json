@@ -10,6 +10,10 @@
 
   },
   {
+    "layer_name": "flatten1",
+    "layer_type":"flatten"
+  },
+  {
     "layer_name": "dense1",
     "layer_type":"dense",
     "units_in": 1,
