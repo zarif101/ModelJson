@@ -1,0 +1,17 @@
+[
+  {
+    "layer_name": "dense1",
+    "layer_type":"dense",
+    "units_in": 1,
+    "units_out":30,
+    "activation": "relu"
+  },
+  {
+    "layer_name": "dense2",
+    "layer_type":"dense",
+    "units_in": 30,
+    "units_out":40,
+    "activation": "relu"
+
+  }
+]
