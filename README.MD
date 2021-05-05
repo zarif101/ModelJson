@@ -19,4 +19,4 @@
  ```python
  from ModelJson import get_model
  model = get_model('model.json')
- ```python
+ ```
