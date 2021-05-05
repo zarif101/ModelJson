@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from layers import Layer
+from layers import DenseLayer,Conv2dLayer
 import collections
 from collections import OrderedDict
 
@@ -15,7 +15,10 @@ def get_layers_dict(json_list):
     layers_list = []
     for layer_info in json_list:
         #(layer_name,layer),(layer_activation_name,layer_activation) = Layer(layer_info)
-        layer = Layer(layer_info)
+        if 'dense' in layer_info['layer_type']:
+            layer = DenseLayer(layer_info)
+        elif 'conv2d' in layer_info['layer_type']:
+            layer = Conv2dLayer(layer_info)
         layer_tup,activation_tup = layer.get_torch_layer()
         layers_list.append(layer_tup)
         layers_list.append(activation_tup)

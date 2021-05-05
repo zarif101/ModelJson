@@ -1,5 +1,15 @@
 [
   {
+    "layer_name": "conv1",
+    "layer_type":"conv2d",
+    "units_in": 3,
+    "units_out":40,
+    "kernel_size_1":3,
+    "kernel_size_2":4,
+    "activation": "relu"
+
+  },
+  {
     "layer_name": "dense1",
     "layer_type":"dense",
     "units_in": 1,
