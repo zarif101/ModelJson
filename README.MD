@@ -20,6 +20,7 @@
  ```python
  from ModelJson import get_model
  model = get_model('model.json')
+ # model can now be used just as any other PyTorch model!
  ```
  - You can test that functionality is working as expected, by running "test.py" and passing in the path to the model json file as a command line argument
  - Ex:
